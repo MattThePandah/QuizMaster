@@ -1,0 +1,77 @@
+doctype html
+html(ng-app)
+    head
+        title QuizMaster Player screen
+        link(rel='stylesheet', href='/css/bootstrap.min.css')
+    body
+
+        div(ng-controller='AppCtrl', class="col-md-12")
+            div
+                H1 Team name: {{username}}
+                H3 Score: {{gameState.scores[username]}}
+
+
+            div(id='registration_input' ng-show="gameState.phase == gameState.phaseOpt.REGISTER"  class="well well-default")
+
+                h3 Team Registration Form
+
+                form(ng-submit="sendUsername()")
+                    div(class='form-horizontal')
+                        div(class='form-group')
+                            label(for='teamName' class="col-sm-2 control-label") Team Name:
+
+                            div(class="col-sm-8")
+                                input(id='teamName' class='form-control' type='text', size='60' ng-model='username' placeholder='enter team name')
+                        p.
+                        input(type='submit', class='btn btn-default' value='Register')
+            div(ng-show="gameState.questiontype == gameState.questionOpt.TEXT")
+                div(ng-hide="gameState.phase == gameState.phaseOpt.REGISTER" ng-show="gameState.questiontype == gameState.questionOpt.TEXT"
+                    class="well well-default")
+                    H2 Question: {{gameState.currentQuestion}}
+                    H2 This question is a {{gameState.scoreweight}} point question.
+                    h3 Answer Form
+                    input(id="test" class='form-control'
+                        ng-disabled="gameState.phase == gameState.phaseOpt.LOCK"
+                        type='text', size='100' ng-model='answer' placeholder='enter answer here')
+                    p
+                        script.
+                            window.onkeypress = function(e) {
+                            if ((e.which || e.keyCode) == 13) {
+                                document.getElementById("buzzer").click();
+                                }
+                            }
+
+                    input(id="buzzer" onkeypress="handle(event)" ng-click="buzzer({username:username, answer:answer})"
+                        ng-disabled="gameState.phase == gameState.phaseOpt.LOCK"
+                        class='btn btn-default' type='button' value="buzzer")
+            div(ng-show="gameState.questiontype == gameState.questionOpt.MC")
+                div(ng-hide="gameState.phase == gameState.phaseOpt.REGISTER" ng-show="gameState.questiontype == gameState.questionOpt.MC"
+                    class="well well-default")
+                    H2 Question: {{gameState.currentQuestion}}
+                    H2 This question is a {{gameState.scoreweight}} point question.
+                    h3 MULTIPLE CHOICE
+                    p
+
+                    input(id="message_a" onkeypress="handle(event)" ng-click="buzzer({username:username, answer:'A'})"
+                        ng-disabled="gameState.phase == gameState.phaseOpt.LOCK"
+                        class='btn btn-default' type='button' value="Answer A")
+                    input(id="message_b" onkeypress="handle(event)" ng-click="buzzer({username:username, answer:'B'})"
+                        ng-disabled="gameState.phase == gameState.phaseOpt.LOCK"
+                        class='btn btn-default' type='button' value="Answer B")
+                    input(id="message_c" onkeypress="handle(event)" ng-click="buzzer({username:username, answer:'C'})"
+                        ng-disabled="gameState.phase == gameState.phaseOpt.LOCK"
+                        class='btn btn-default' type='button' value="Answer C")
+                    input(id="message_d" onkeypress="handle(event)" ng-click="buzzer({username:username, answer:'D'})"
+                        ng-disabled="gameState.phase == gameState.phaseOpt.LOCK"
+                        class='btn btn-default' type='button' value="Answer D")
+
+            div(class="col-md-2")
+                p (c) Matthew Burling 2017
+
+        script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js')
+        script(src='/socket.io/socket.io.js')
+        script(src='/js/app.js')
+        script(src='/services.js')
+        script(src='/js/filters.js')
+        script(src='/js/directives.js')
+        script(src='/playerng.js')

@@ -1,0 +1,13 @@
+{
+  "name": "Quizmaster Game Server",
+  "version": "0.0.0",
+  "description": "Quizmaster for BSc Final Year Computer Science Project.",
+  "dependencies": {
+    "socket.io": "latest",
+    "express": "latest",
+    "jade": "latest",
+    "watchjs": "latest",
+    "mongodb": "latest"
+  },
+  "author": "Matthew Burling"
+}

@@ -1,0 +1,55 @@
+doctype html
+html(ng-app)
+	head
+		title QuizMaster presenting board
+		link(rel='stylesheet', href='/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/css/bootfix.css')
+
+	body
+		div(ng-controller='AppCtrl', class="col-md-12")
+
+			div(class="col-md-3")
+				H1 {{gameState.game_title}}
+				H2 Round {{gameState.round}}
+				H2 Question {{gameState.currentQuestion}}
+			p
+			div(class="col-md-12 well well-default")
+				div(class="col-md-10")
+					div(ng-repeat="player in gameState.players"
+						class="col-md-5"
+						class="panel panel-danger"
+						ng-show="player.username == gameState.hot_player"
+						style="background-color: orange"
+						)
+						div(class='panel-body')
+							H4 Hot Seat
+							H3 {{player.username}}
+							H5 {{player.members}}
+
+							p Score: {{gameState.scores[player.username]}}
+							p
+							H4 Answer:
+							H2 {{gameState.answerBoards[player.username]}}
+				div(class="col-md-10")
+					div(ng-repeat="player in gameState.players"
+						class="col-md-5"
+						class="panel panel-warning"
+						ng-hide="player.username == gameState.hot_player")
+						div(class='panel-body')
+							H2 {{player.username}}
+							H5 {{player.members}}
+							H2
+								span Score
+								span : {{gameState.scores[player.username]}}
+
+			div(class="col-md-2")
+				p (c) Matthew Burling 2017
+
+
+		script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js')
+		script(src='/socket.io/socket.io.js')
+		script(src='/js/app.js')
+		script(src='/services.js')
+		script(src='/js/filters.js')
+		script(src='/js/directives.js')
+		script(src='/boardng.js')

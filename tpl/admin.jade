@@ -1,0 +1,25 @@
+doctype html
+html(ng-app)
+    head
+        title QuizMaster Admin Panel
+        link(rel='stylesheet', href='/css/bootstrap.min.css')
+    body
+        div(ng-controller='AppCtrl', class="col-md-12" )
+            H1 QuizMaster admin panel
+
+            button(onclick="questionPage()") Question page
+
+
+            p (c) Matthew Burling 2017
+
+            script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js')
+            script(src='/socket.io/socket.io.js')
+            script(src='/js/app.js')
+            script(src='/services.js')
+            script(src='/js/filters.js')
+            script(src='/js/directives.js')
+
+script.
+    function questionPage() {
+        window.location.href = 'admin_question'
+    }
