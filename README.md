@@ -16,15 +16,21 @@ Backend: Node.js
 Frontend: HTML/CSS/JavaScript
 
 📖 Documentation
+
 Complete project documentation including system design, user guides, and technical specifications can be found in the project documentation files. Mockup screenshots and design rationale are also included to demonstrate the development process.
 
 🎯 Business Context
+
 This project showcases several skills directly applicable to enterprise software development:
 
 System Design - Architecting scalable assessment platforms
+
 User Experience - Creating intuitive interfaces for different user types
+
 Data Management - Handling user responses, scoring, and reporting
+
 Workflow Management - Understanding assessment processes and user journeys
+
 
 Code Maintainence:
 This code is currently not maintained.
