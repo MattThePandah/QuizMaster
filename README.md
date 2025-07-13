@@ -5,14 +5,20 @@ QuizMaster is a flexible quiz application built with Node.js that supports multi
 ✨ Features
 
 Multiple Quiz Types - Support for various question formats and assessment styles
+
 User Management - Handle different user roles and permissions
+
 Real-time Assessment - Interactive quiz taking experience
+
 Results Tracking - Comprehensive scoring and progress monitoring
+
 Flexible Configuration - Customizable quiz parameters and settings
+
 
 🛠️ Tech Stack
 
 Backend: Node.js
+
 Frontend: HTML/CSS/JavaScript
 
 📖 Documentation
